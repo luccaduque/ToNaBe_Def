@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de usuários</title>
 </head>
-
+    <h1>Cadastre-se</h1>
 <body>
     <form action="{% url 'cadastro' %}" method="POST"> 
         
@@ -23,6 +23,11 @@
         <input type="submit" value="Cadastrar">
     
     </form>
+
+     <br><br><br>Você já tem uma conta?</p>
+    <a href="{% url 'login' %}">
+    <button>Faça seu login</button>
+</a>
 </body>
 </html>
 

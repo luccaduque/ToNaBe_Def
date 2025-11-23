@@ -1,9 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as login_django
-from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 def cadastro(request):
     if request.method == "GET":
@@ -16,11 +16,12 @@ def cadastro(request):
         user = User.objects.filter(username=username).first()
 
         if user:
-            return HttpResponse('Esse username já existe!')
+            messages.error(request, 'Este username já está em uso!')
+            return render(request, 'users/cadastro.html')
         
         user = User.objects.create_user(username=username, email=email, password=password)
         user.save()
-        return HttpResponse('Usuário cadastrado com sucesso!')
+        return redirect('sistema:pagina_principal')
 
 
 def login(request):
@@ -34,9 +35,12 @@ def login(request):
         
         if user:
             login_django(request, user)
-            return HttpResponse('Autenticado')
+            messages.success(request, f'Bem-vindo de volta, {username}!')
+            return redirect('sistema:pagina_principal')
+        
         else:
-            return HttpResponse('Username ou senha inválidos!')
+            messages.error(request, 'Username ou senha inválidos!')
+            return render(request, 'users/login.html')
 
 #@login_required (login_url='/users/login/')       
  #def sistema(request):

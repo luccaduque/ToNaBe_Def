@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'ToNaBes',
     'users',
     'sistema',
+    'bootstrap3',
 ]
 
 MIDDLEWARE = [
