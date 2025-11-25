@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/style.css">
-    <link rel="icon" href="styles/elements/ToNaBê_Tabacaria_e_Headshops-removebg-preview.png" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'admin/css/style.css' %}">
+    <link rel="icon" href="{% static 'admin/img/ToNaBê_Tabacaria_e_Headshops-removebg-preview.png' %}" type="image/x-icon">
     <title>Gestão ERP ToNaBê</title>
 </head>
 <body>
     <header> 
-        <h1><img class="logo-header" src="styles/elements/logo_header_bg_removed.png" alt="logo do header"></h1>
+        <h1><img class="logo-header" src=" {% static 'admin/img/logo_header_bg_removed.png' %} " alt="logo do header"></h1>
         <p>Sistema de gestão da Tabacaria ToNaBê</p>
     </header>
 
     <nav>
-        <a href="index.html" class="btn ativo">Visão Geral</a>
-        <a href="categories/estoque.html" class="btn">Estoque</a>
-        <a href="categories/vendas.html" class="btn">Vendas</a>
-        <a href="categories/produtos.html" class="btn">Produtos</a>
-        <a href="categories/fornecedores.html" class="btn">Fornecedores</a>
-        <a href="categories/funcionarios.html" class="btn">Quadro de Funcionários</a>
+        <a href="{% url 'sistema:pagina_principal' %}" class="btn ativo">Visão Geral</a>
+        <a href="{% url 'sistema:estoque' %}" class="btn">Estoque</a>
+        <a href="{% url 'sistema:vendas' %}" class="btn">Vendas</a>
+        <a href="{% url 'sistema:produtos' %}" class="btn">Produtos</a>
+        
+       
+
     </nav>
 
     <main>
-        <h2>Bem-vindo, [usuário]!</h2>
+        <h2>Bem-vindo, {{request.user.username}}!</h2>
         <p>A ideia da página "Visão Geral" não é essa, fiz assim só pro projeto não ficar 100% vazio. Tem muito por vir ainda <3 </p>
         <div class="card-container">
             <div class="card">

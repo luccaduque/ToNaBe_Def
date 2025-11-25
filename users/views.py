@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import login as login_django
 from django.contrib import messages
 
+
 def cadastro(request):
     if request.method == "GET":
         return render(request, 'users/cadastro.html')
@@ -41,9 +42,4 @@ def login(request):
         else:
             messages.error(request, 'Username ou senha inválidos!')
             return render(request, 'users/login.html')
-
-#@login_required (login_url='/users/login/')       
- #def sistema(request):
-    #if request.user.is_authenticated:
-        #return HttpResponse('Autenticado no sistema')
 
