@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome screen</title>
+    <link rel="stylesheet" href="{% static 'admin/css/welcomescreen.css' %}">
+    <link rel="icon" href="{% static 'admin/img/ToNaBê_Tabacaria_e_Headshops-removebg-preview.png' %}" type="image/x-icon">
+    <title>Gestão ERP ToNaBê | Boas-vindas!</title>
 </head>
 <body>
-    <h1>Bem-vindo ao sistema de gestão da tabacaria TôNaBê</h1>
+  
+        <img class="logo-header" src=" {% static 'admin/img/logo_header_login.png' %} " alt="logo do header">
+        <h1>Sistema de gestão da Tabacaria ToNaBê</h1>
+    
+
+   
     <p>Você precisa estar logado para acessar o sistema!
         <br><br><br>Você já tem uma conta?</p>
     <a href="{% url 'login' %}">

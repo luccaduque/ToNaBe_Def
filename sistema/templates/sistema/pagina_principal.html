@@ -19,14 +19,12 @@
         <a href="{% url 'sistema:pagina_estoque' %}" class="btn">Estoque</a>
         <a href="{% url 'sistema:pagina_vendas' %}" class="btn">Vendas</a>
         <a href="{% url 'sistema:pagina_produtos' %}" class="btn">Produtos</a>
-        
-       
 
     </nav>
 
     <main>
         <h2>Bem-vindo, {{request.user.username}}!</h2>
-    
+        <br><br>
         <h3>Faturamento Total</h3>
         <p><strong>R$ {{ total_faturamento }}</strong></p>
     
