@@ -10,11 +10,11 @@ urlpatterns = [
     path('pagina_estoque/', views.pagina_estoque, name='pagina_estoque'),
     path('pagina_vendas/', views.pagina_vendas, name='pagina_vendas'),
     path('pagina_produtos/', views.pagina_produtos, name='pagina_produtos'),
-    path('produtos/', views.lista_produtos, name='lista_produtos'),
-    path('produtos/add/', views.adicionar_produto, name='adicionar_produto'),
-    path('estoque/<int:id>/', views.alterar_estoque, name='alterar_estoque'),
-    path('venda/<int:id>/', views.registrar_venda, name='registrar_venda'),
-    path('vendas/', views.relatorio_vendas, name='relatorio_vendas'),
-    path('faturamento/', views.faturamento_por_data, name='faturamento_por_data'),
+    path('produtos/', views.pagina_produtos, name='lista_produtos'),
+    path('estoque/', views.pagina_estoque, name='pagina_estoque'),
+    path('estoque/atualizar/<int:produto_id>/<str:acao>/', views.atualizar_estoque, name='atualizar_estoque'),
+    path('vendas/', views.pagina_vendas, name='pagina_vendas'),
+    path('vendas/registrar/', views.registrar_venda, name='registrar_venda'),
+
 
 ]

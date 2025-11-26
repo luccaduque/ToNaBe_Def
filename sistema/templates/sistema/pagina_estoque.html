@@ -26,9 +26,44 @@
 
 <main>
     <h2>Gestão de Estoque</h2>
-    <p>Gerencie o estoque dos produtos da tabacaria aqui</p>
+    <p>Gerencie o estoque dos produtos</p>
 
-    <!-- Conteúdo específico da página de estoque -->   
+    <h3>Alterar Estoque</h3>
+
+    <form method="POST" class="formulario-padrao">
+        {% csrf_token %}
+
+        <label>Produto:</label>
+        <select name="produto_id">
+            {% for p in produtos %}
+            <option value="{{ p.id }}">{{ p.nome }}</option>
+            {% endfor %}
+        </select>
+
+        <label>Quantidade:</label>
+        <input type="number" name="quantidade" required>
+
+        <button type="submit" name="acao" value="add">Adicionar</button>
+        <button type="submit" name="acao" value="remove">Remover</button>
+    </form>
+
+    <hr>
+
+    <h3>Estoque Atual</h3>
+    <table class="tabela-padrao">
+        <tr>
+            <th>Produto</th>
+            <th>Quantidade</th>
+        </tr>
+
+        {% for e in estoques %}
+        <tr>
+            <td>{{ e.produto.nome }}</td>
+            <td>{{ e.quantidade }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
 </main>
 
  <footer>

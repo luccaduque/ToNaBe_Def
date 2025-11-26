@@ -26,9 +26,53 @@
 
 <main>
     <h2>Gestão de Vendas</h2>
-    <p>Registre e analise as vendas realizadas na tabacaria aqui.</p>
+    <p>Registre e visualize as vendas realizadas</p>
 
-    <!-- Conteúdo específico da página de vendas -->
+    <h3>Registrar Nova Venda</h3>
+
+    <form method="POST" class="formulario-padrao">
+        {% csrf_token %}
+
+        <label>Produto:</label>
+        <select name="produto_id" required>
+            {% for p in produtos %}
+            <option value="{{ p.id }}">{{ p.nome }}</option>
+            {% endfor %}
+        </select>
+
+        <label>Cliente:</label>
+        <input type="text" name="cliente" required>
+
+        <label>Quantidade:</label>
+        <input type="number" name="quantidade" required>
+
+        <button type="submit">Registrar Venda</button>
+    </form>
+
+    <hr>
+
+    <h3>Vendas Registradas</h3>
+
+    <table class="tabela-padrao">
+        <tr>
+            <th>Produto</th>
+            <th>Cliente</th>
+            <th>Quantidade</th>
+            <th>Total</th>
+            <th>Data</th>
+        </tr>
+
+        {% for v in vendas %}
+        <tr>
+            <td>{{ v.produto.nome }}</td>
+            <td>{{ v.cliente }}</td>
+            <td>{{ v.quantidade }}</td>
+            <td>R$ {{ v.total }}</td>
+            <td>{{ v.data|date:"d/m/Y H:i" }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
 </main>
 
  <footer>

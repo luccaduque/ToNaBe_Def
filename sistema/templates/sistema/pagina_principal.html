@@ -26,32 +26,27 @@
 
     <main>
         <h2>Bem-vindo, {{request.user.username}}!</h2>
-        <p>A ideia da página "Visão Geral" não é essa, fiz assim só pro projeto não ficar 100% vazio. Tem muito por vir ainda <3 </p>
-        <div class="card-container">
-            <div class="card">
-                <h3>Visão Geral</h3>
-                <p>Resumo das operações e desempenho do sistema</p>
-            </div>
-            <div class="card">
-                <h3>Estoque</h3>
-                <p>Gerenciamento de produtos em estoque</p>
-            </div>
-            <div class="card">
-                <h3>Vendas</h3>
-                <p>Registro e análise de vendas realizadas</p>
-            </div>
-            <div class="card">
-                <h3>Produtos</h3>
-                <p>Cadastro e gerenciamento de produtos</p>
-            </div>
-            <div class="card">
-                <h3>Fornecedores</h3>
-                <p>Gerenciamento de fornecedores e contatos</p>
-            </div>
-            <div class="card">
-                <h3>Funcionários</h3>
-                <p>Quadro de funcionários e suas funções</p>
-            </div>
+    
+        <h3>Faturamento Total</h3>
+        <p><strong>R$ {{ total_faturamento }}</strong></p>
+    
+        <hr>
+    
+        <h3>Estoque Atual</h3>
+        <table class="tabela-padrao">
+            <tr>
+                <th>Produto</th>
+                <th>Quantidade</th>
+            </tr>
+    
+            {% for e in estoques %}
+            <tr>
+                <td>{{ e.produto.nome }}</td>
+                <td>{{ e.quantidade }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    
     </main>
     <footer>
         &copy; 2025 ToNaBê Tabacaria. Todos os direitos reservados.
